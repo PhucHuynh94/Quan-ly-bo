@@ -1,0 +1,12 @@
+ *
+
+!.gitignore
+
+!password.php
+!bin
+!composer
+!mandrill
+!michelf
+!mobiledetect
+!robmorgan
+!symfony
