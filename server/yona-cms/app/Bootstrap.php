@@ -194,7 +194,7 @@ class Bootstrap
     {
         $view = new \Phalcon\Mvc\View();
 
-        define('MAIN_VIEW_PATH', '../../../views/');
+        define('MAIN_VIEW_PATH', '../../../views/nuoiboso/');
         $view->setMainView(MAIN_VIEW_PATH . 'main');
         $view->setLayoutsDir(MAIN_VIEW_PATH . '/layouts/');
         $view->setLayout('main');
