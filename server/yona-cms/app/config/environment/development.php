@@ -6,9 +6,9 @@ return [
 
     'database'  => [
         'adapter'  => 'Mysql',
-        'host'     => '128.199.116.234',
-        'username' => 'nuoiboso',
-        'password' => 'nuoibo123!@#',
+        'host'     => '127.0.0.1',
+        'username' => 'root',
+        'password' => 'smile123!@#',
         'dbname'   => 'nuoiboso',
         'charset'  => 'utf8',
     ],

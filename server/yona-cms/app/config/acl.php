@@ -10,6 +10,8 @@ return [
         'page/index'        => '*',
         'publication/index' => '*',
         'sitemap/index'     => '*',
+        'user/index'     => '*',
+        'user/api'     => '*',
     ],
     'member'     => [
         'index/index' => '*',
@@ -53,5 +55,7 @@ return [
         'seo/sitemap'        => '*',
         'seo/manager'        => '*',
         'tree/admin'         => '*',
+        'user/admin'   => '*',
+
     ],
 ];

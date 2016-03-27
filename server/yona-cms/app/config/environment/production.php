@@ -6,15 +6,15 @@ return [
 
     'database'  => [
         'adapter'  => 'Mysql',
-        'host'     => 'localhost',
-        'username' => '',
-        'password' => '',
-        'dbname'   => '',
+        'host'     => '128.199.116.234',
+        'username' => 'nuoiboso',
+        'password' => 'nuoiboso123!@#',
+        'dbname'   => 'nuoiboso',
         'charset'  => 'utf8',
     ],
 
     'memcache'  => [
-        'host' => 'localhost',
+        'host' => '128.199.116.234',
         'port' => 11211,
     ],
 
