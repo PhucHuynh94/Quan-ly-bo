@@ -1,24 +1,32 @@
 <?php
 
 /**
- * AdminUserController
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
 namespace User\Controller;
 
 use Application\Mvc\Controller;
-use User\Model\User;
+use User\Form\UserForm;
 use User\Form\LoginForm;
-use Phalcon\Mvc\View;
+use User\Model\User;
 
 class IndexController extends Controller
 {
 
     public function indexAction()
     {
+        $this->view->languages_disabled = true;
 
+        $auth = $this->session->get('auth');
+        if (!$auth) {
+            $this->flash->notice($this->helper->at('Log in please'));
+            $this->redirect($this->url->get() . 'user/index/login');
+        }
+        
+        $this->helper->title($this->helper->at('User Panel'), true);
+
+        $this->helper->activeMenu()->setActive('admin-home');
 
     }
 
@@ -37,15 +45,15 @@ class IndexController extends Controller
                             if ($user->isActive()) {
                                 $this->session->set('auth', $user->getAuthData());
                                 $this->flash->success($this->helper->translate("Welcome to the administrative control panel!"));
-                                return $this->redirect($this->url->get() . 'user/index');
+                                return $this->redirect($this->url->get() . 'admin');
                             } else {
                                 $this->flash->error($this->helper->translate("User is not activated yet"));
                             }
                         } else {
-                            $this->flash->error($this->helper->translate("Sai số điện thoại hoặc mật khẩu"));
+                            $this->flash->error($this->helper->translate("Incorrect login or password"));
                         }
                     } else {
-                        $this->flash->error($this->helper->translate("Sai số điện thoại hoặc mật khẩu"));
+                        $this->flash->error($this->helper->translate("Incorrect login or password"));
                     }
                 } else {
                     foreach ($form->getMessages() as $message) {

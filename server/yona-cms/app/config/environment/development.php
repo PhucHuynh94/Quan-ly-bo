@@ -1,14 +1,13 @@
 <?php
-
 return [
     'base_path' => 'http://nuoiboso.dev/',
     //'base_path' => 'http://localhost/yona-cms/web/',
 
     'database'  => [
         'adapter'  => 'Mysql',
-        'host'     => '127.0.0.1',
+        'host'     => 'localhost',
         'username' => 'root',
-        'password' => 'smile123!@#',
+        'password' => 'smite09.2014',
         'dbname'   => 'nuoiboso',
         'charset'  => 'utf8',
     ],

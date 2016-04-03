@@ -1,7 +1,7 @@
 <?php
+
 /**
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
 namespace User\Model;
@@ -69,10 +69,12 @@ class User extends \Phalcon\Mvc\Model
     {
         $authData = new stdClass();
         $authData->id = $this->getId();
-        $authData->admin_session = false;
         $authData->phoneNumber = $this->getPhoneNumber();
         $authData->email = $this->getEmail();
-        $authData->name = $this->getName();
+        $authData->name = $this->getName();        
+        $authData->role = $this->getRole();
+        $authData->birthday = $this->getBirthday();
+        $authData->address = $this->getAddress();
         return $authData;
     }
 
@@ -97,9 +99,10 @@ class User extends \Phalcon\Mvc\Model
 
     public function isActive()
     {
-        if ($this->active) {
+        if ($this->active == 1) {
             return true;
         }
+        return false;
     }
 
     public function checkPassword($password)
@@ -115,7 +118,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
         return $this;
@@ -127,7 +130,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setPhoneNumber($phoneNumber)
+    public function setPhoneNumber($phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
         return $this;
@@ -152,7 +155,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setEmail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
         return $this;
@@ -164,7 +167,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setName($name)
+    public function setName($name)
     {
         $this->name = $name;
         return $this;
@@ -176,7 +179,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setAddress($address)
+    public function setAddress($address)
     {
         $this->address = $address;
         return $this;
@@ -188,7 +191,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setBirthday($birthday)
+    public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
         return $this;
@@ -200,7 +203,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setGender($gender)
+    public function setGender($gender)
     {
         $this->gender = $gender;
         return $this;
@@ -211,8 +214,14 @@ class User extends \Phalcon\Mvc\Model
         return $this->role;
     }
 
+    public function getRoleTitle()
+    {
+        if (array_key_exists($this->role, self::$roles)) {
+            return self::$roles[$this->role];
+        }
+    }
 
-    private function setRole($role)
+    public function setRole($role)
     {
         $this->role = $role;
         return $this;
@@ -224,7 +233,7 @@ class User extends \Phalcon\Mvc\Model
     }
 
 
-    private function setActive($active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;

@@ -1,9 +1,7 @@
 <?php
 
 /**
- * AdminUserController
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
 namespace User\Controller;
@@ -18,14 +16,13 @@ class AdminController extends Controller
     public function initialize()
     {
         $this->setAdminEnvironment();
-        $this->helper->activeMenu()->setActive('admin-user');
-
+        $this->helper->activeMenu()->setActive('user');
         $this->view->languages_disabled = true;
     }
 
     public function indexAction()
     {
-        $this->view->entries = AdminUser::find([
+        $this->view->entries = User::find([
             "order" => "id DESC"
         ]);
 
@@ -34,21 +31,21 @@ class AdminController extends Controller
 
     public function addAction()
     {
-        $this->view->pick(['admin-user/edit']);
+        $this->view->pick(['admin/edit']);
 
-        $model = new AdminUser();
-        $form = new AdminUserForm();
+        $model = new User();
+        $form = new UserForm();
         $form->initAdding();
 
         if ($this->request->isPost()) {
-            $model = new AdminUser();
+            $model = new User();
             $post = $this->request->getPost();
             $form->bind($post, $model);
             if ($form->isValid()) {
                 $model->setCheckboxes($post);
                 if ($model->save()) {
-                    $this->flash->success($this->helper->at('User created', ['name' => $model->getLogin()]));
-                    $this->redirect($this->url->get() . 'admin/admin-user');
+                    $this->flash->success($this->helper->at('User created', ['name' => $model->getPhoneNumber()]));
+                    $this->redirect($this->url->get() . 'user/admin');
                 } else {
                     $this->flashErrors($model);
                 }
@@ -61,26 +58,24 @@ class AdminController extends Controller
         $this->view->model = $model;
         $this->view->submitButton = $this->helper->at('Add New');
 
-        $this->helper->title($this->helper->at('Administrator'), true);
+        $this->helper->title($this->helper->at('Add new user'), true);
     }
 
     public function editAction($id)
     {
-        $model = AdminUser::findFirst($id);
+        $model = User::findFirst($id);
         if (!$model) {
-            $this->redirect($this->url->get() . 'admin/admin-user');
+            $this->redirect($this->url->get() . 'admin/edit');
         }
-
-        $form = new AdminUserForm();
-
+        $form = new UserForm();
         if ($this->request->isPost()) {
             $post = $this->request->getPost();
             $form->bind($post, $model);
             if ($form->isValid()) {
                 $model->setCheckboxes($post);
                 if ($model->save() == true) {
-                    $this->flash->success('User <b>' . $model->getLogin() . '</b> has been saved');
-                    return $this->redirect($this->url->get() . 'admin/admin-user');
+                    $this->flash->success('User <b>' . $model->getPhoneNumber() . '</b> has been saved');
+                    return $this->redirect($this->url->get() . 'user/admin');
                 } else {
                     $this->flashErrors($model);
                 }
@@ -100,24 +95,16 @@ class AdminController extends Controller
 
     public function deleteAction($id)
     {
-        $model = AdminUser::findFirst($id);
+        $model = User::findFirst($id);
         if (!$model) {
-            return $this->redirect($this->url->get() . 'admin/admin-user');
+            return $this->redirect($this->url->get() . 'user/admin');
         }
-
-        if ($model->getLogin() == 'admin') {
-            $this->flash->error('Admin user cannot be deleted');
-            return $this->redirect($this->url->get() . 'admin/admin-user');
-        }
-
         if ($this->request->isPost()) {
             $model->delete();
-            $this->flash->warning('Deleting user <b>' . $model->getLogin() . '</b>');
-            return $this->redirect($this->url->get() . 'admin/admin-user');
+            $this->flash->warning('Deleting user <b>' . $model->getPhoneNumber() . '</b>');
+            return $this->redirect($this->url->get() . 'user/admin');
         }
-
         $this->view->model = $model;
-
         $this->helper->title($this->helper->at('Delete User'), true);
     }
 

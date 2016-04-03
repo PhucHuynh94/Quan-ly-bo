@@ -1,7 +1,7 @@
 <!--controls-->
 <div class="ui segment">
 
-    <a href="{{ url.get() }}admin/admin-user/add" class="ui button positive">
+    <a href="{{ url.get() }}user/admin/add" class="ui button positive">
         <i class="icon plus"></i> {{ helper.at('Add New') }}
     </a>
 
@@ -12,8 +12,8 @@
     <thead>
     <tr>
         <th style="width: 100px"></th>
-        <th>{{ helper.at('Login') }}</th>
-        <th>{{ helper.at('Email') }}</th>
+        <th>{{ helper.at('Phone number') }}</th>
+        <th>{{ helper.at('Address') }}</th>
         <th>{{ helper.at('Name') }}</th>
         <th>{{ helper.at('Role') }}</th>
         <th>{{ helper.at('Active') }}</th>
@@ -22,10 +22,10 @@
     <tbody>
     {% for user in entries %}
         <tr>
-            {% set url = url.get() ~ 'admin/admin-user/edit/' ~ user.getId() %}
+            {% set url = url.get() ~ 'user/admin/edit/' ~ user.getId() %}
             <td><a href="{{ url }}" class="mini ui icon button"><i class="pencil icon"></i></a></td>
-            <td><a href="{{ url }}">{{ user.getLogin() }}</a></td>
-            <td>{{ user.getEmail() }}</td>
+            <td><a href="{{ url }}">{{ user.getPhoneNumber() }}</a></td>
+            <td>{{ user.getAddress() }}</td>
             <td>{{ user.getName() }}</td>
             <td>{{ user.getRoleTitle() }}</td>
             <td>{% if user.getActive() %}<i class="icon checkmark green"></i>{% endif %}</td>

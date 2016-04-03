@@ -35,19 +35,19 @@ class AdminController extends Controller
     {
         $this->view->pick(['admin-user/edit']);
 
-        $model = new AdminUser();
-        $form = new AdminUserForm();
+        $model = new Cow();
+        $form = new CowForm();
         $form->initAdding();
 
         if ($this->request->isPost()) {
-            $model = new AdminUser();
+            $model = new Cow();
             $post = $this->request->getPost();
             $form->bind($post, $model);
             if ($form->isValid()) {
                 $model->setCheckboxes($post);
                 if ($model->save()) {
-                    $this->flash->success($this->helper->at('User created', ['name' => $model->getLogin()]));
-                    $this->redirect($this->url->get() . 'admin/admin-user');
+                    $this->flash->success($this->helper->at('Cow created', ['name' => $model->getId()]));
+                    $this->redirect($this->url->get() . 'cow/admin');
                 } else {
                     $this->flashErrors($model);
                 }
@@ -97,11 +97,11 @@ class AdminController extends Controller
         $this->helper->title($this->helper->at('Manage Users'), true);
     }
 
-    public function deleteAction($id)
+    public function deleteAction()
     {
-        $model = AdminUser::findFirst($id);
+        $model = User::findFirst($id);
         if (!$model) {
-            return $this->redirect($this->url->get() . 'admin/admin-user');
+            return $this->redirect($this->url->get() . 'user/admin');
         }
 
         if ($model->getLogin() == 'admin') {

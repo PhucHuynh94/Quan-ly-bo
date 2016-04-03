@@ -63,6 +63,22 @@
             </a>
         </div>
     </div>
+
+    <div class="item">
+        <div class="header">{{ helper.at('User') }} <i class="wrench icon"></i></div>
+
+        <div class="menu">
+            <a class="item{{ helper.activeMenu().activeClass('user') }}" href="{{ url.get() }}user/admin">
+                {{ helper.at('List Users') }} <i class="user icon"></i>
+            </a>
+        </div>
+        <div class="menu">
+            <a class="item{{ helper.activeMenu().activeClass('user-admin-add') }}" href="{{ url.get() }}user/admin/add">
+                {{ helper.at('Add User') }} <i class="user icon"></i>
+            </a>
+        </div>        
+    </div>    
+
     <div class="item">
         <a href="{{ url.get() }}" class="ui primary tiny button" target="_blank">
             <i class="home icon"></i>{{ helper.at('View Site') }}

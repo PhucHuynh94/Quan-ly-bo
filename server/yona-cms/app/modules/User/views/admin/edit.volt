@@ -3,7 +3,7 @@
     <!--controls-->
     <div class="ui segment">
 
-        <a href="{{ url.get() }}admin/admin-user" class="ui button">
+        <a href="{{ url.get() }}user/admin" class="ui button">
             <i class="icon left arrow"></i> Back
         </a>
 
@@ -12,7 +12,7 @@
         </div>
 
         {% if model.getId() %}
-            <a href="{{ url.get() }}admin/admin-user/delete/{{ model.getId() }}" class="ui button red">
+            <a href="{{ url.get() }}user/admin/delete/{{ model.getId() }}" class="ui button red">
                 <i class="icon trash"></i> Delete
             </a>
         {% endif %}
@@ -23,13 +23,14 @@
     <div class="ui segment">
         <div class="two fields">
             <div class="field">
-                {{ form.renderDecorated('login') }}
-                {{ form.renderDecorated('email') }}
-                {{ form.renderDecorated('name') }}
+                {{ form.renderDecorated('phoneNumber') }}
+                {{ form.renderDecorated('password') }}                
+                {{ form.renderDecorated('role') }}               
             </div>
             <div class="field">
-                {{ form.renderDecorated('role') }}
-                {{ form.renderDecorated('password') }}
+                {{ form.renderDecorated('name') }}  
+                {{ form.renderDecorated('address') }}            
+                {{ form.renderDecorated('email') }}
                 {{ form.renderDecorated('active') }}
             </div>
         </div>

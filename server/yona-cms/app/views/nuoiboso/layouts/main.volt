@@ -24,8 +24,6 @@
 
 </div>
 
-{% if registry.cms['PROFILER'] %}
-    {{ helper.dbProfiler() }}
-{% endif %}
+
 
 {{ helper.javascript('body') }}

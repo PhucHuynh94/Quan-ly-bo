@@ -1,9 +1,7 @@
 <?php
 
 /**
- * AdminUser
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
 namespace User\Form;
@@ -32,7 +30,7 @@ class UserForm extends Form
         $this->add(
             (new Password('password'))
                 ->setLabel('Mật khẩu')
-        );       
+        );            
 
         $this->add(
             (new Email('email'))
@@ -43,6 +41,11 @@ class UserForm extends Form
             (new Text('name'))
                 ->setLabel('Tên')
         );
+
+        $this->add(
+            (new Text('address'))
+                ->setLabel('Địa chỉ')
+        );        
 
         $this->add(
             (new Select('role', User::$roles))
