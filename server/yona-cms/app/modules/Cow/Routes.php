@@ -1,12 +1,10 @@
 <?php
 
 /**
- * Routes
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
-namespace User;
+namespace Cow;
 
 class Routes
 {
@@ -17,7 +15,7 @@ class Routes
             'module'     => 'cow',
             'controller' => 'index',
             'action'     => 'index',
-        ))->setName('user');
+        ))->setName('cow');
 
         return $router;
 

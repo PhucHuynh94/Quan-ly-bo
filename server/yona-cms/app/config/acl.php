@@ -56,6 +56,7 @@ return [
         'seo/manager'        => '*',
         'tree/admin'         => '*',
         'user/admin'   => '*',
+        'cowtype/admin'   => '*',
 
     ],
 ];
