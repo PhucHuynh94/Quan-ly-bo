@@ -1,0 +1,114 @@
+- Danh sách status id trả về trong hệ thống:
+
+	------------------ [CODE] DEFINE    -------------------------------------
+	
+	A [NAME]	B [STATUS]	C [ACTION]	D [ID]
+	
+	[NAME]
+		U : User (người dùng)
+		C : Cow (bò)
+		CT : CowType (Giống bò)
+	[STATUS]
+		2: Thành công
+		3: Lỗi người dùng
+		4: Lỗi hệ thống
+	[ACTION]
+		1: Create: (tạo tài khoản, tạo bò,...)
+		2: GET: (người dùng đăng nhập, lấy thông tin bò)
+		3: Edit: (Sửa thông tin người dùng, sửa thông tin bò,...)
+		4: Xoá: (Xoá người dùng).
+		5: option: tuỳ chọn thêm.
+	[ID]
+		Id do lập trình viên tự đặt ra.
+
+	-------------------    Thành công    ------------------------------------------------------
+	
+	[USER]
+	+ U21000: Tạo tài khoản người dùng thành công.
+	+ U22000: Đăng nhập thành công.
+	+ U23000: Edit thông tin người dùng thành công.
+	+ U24000: Xoá người dùng thành công.
+	+ U25000: Đăng xuất thành công.
+
+	[COW]
+	+ C21000: Tạo bò thành công.
+	+ C22000: Lấy thông tin bò thành công.
+	+ C23000: Sửa thông tin bò thành công.
+	+ C24000: Xoá bò thành công.
+
+	[COWTYPE]
+	+ CT21000: Tạo giống bò thành công
+	+ CT22000: Lấy thông tin giống bò thành công
+	+ CT23000: Sửa thông tin giống bò thành công
+	+ CT24000: Xóa giống bò thành công
+
+	-------------------    Lỗi người dùng    ----------------------------------------------------
+
+	[USER]
+	+ U31000: Tài khoản người dùng đã tồn tại, không thể tạo tài khoản người dùng.
+	+ U31001: Dữ liệu không chính xác, không thể tạo tài khoản người dùng.
+	
+	+ U32000: Tài khoản người dùng không tồn tại, không thể đăng nhập.
+	+ U32001: Mật khẩu không chính xác, không thể đăng nhập.
+	+ U32002: Tài khoản người dùng đã bị khoá, không thể đăng nhập, vui lòng liên hệ quản trị viên.
+
+	+ U33000: Số điện thoại này đã tồn tại trên hệ thống, không thể sửa số điện thoại.
+	+ U33001: Dữ liệu không chính xác, không thể sửa tài khoản người dùng.
+	+ U33002: Bạn không có quyền sửa thông tin người dùng này.
+
+	[COWTYPE]
+	+ CT31000: Dữ liệu không chính xác, không thể tạo giống bò.
+	+ CT32000: Mã giống bò không chính xác, không thể lấy thông tin giống bò.
+	+ CT33000: Dữ liệu không chính xác, không thể sửa giống bò.
+	+ CT34000: Dữ liệu không chính xác, không thể sửa giống bò.
+
+	-------------------    Lỗi hệ thống    ----------------------------------------------------
+
+
+	[USER]
+	+ U41000: Có lỗi xảy ra, không thể tạo tài khoản người dùng.
+	+ U42000: Có lỗi xảy ra, không thể đăng nhập.
+	+ U43000: Có lỗi xảy ra, không thể sửa thông tin người dùng.
+	+ U44000: Có lỗi xảy ra, không thể xoá người dùng.
+	+ U45000: Có lỗi xảy ra, không thể đăng xuất.
+	
+
+
+- User
+	- Tạo tài khoản:
+		+ Mô tả: 
+		+ API: /user/api/add
+		+ Method: POST
+		+ Form:
+			+ phoneNumber: varchar(50)
+			+ password: varchar(255)
+			+ email: varchar(255) - Null
+			+ name: varchar(255) - Null
+			+ address: varchar(255) - Null
+			+ birthday: int(11)
+			+ gender: enum('male','female') - default('male')
+			+ role: enum('farmer','veterinarians','scientist','traders') - default('farmer')
+			+ active: enum('yes','no') - default('yes')
+		+ Respone:
+			[
+				'status' : [CODE]
+			]
+	- Đăng nhập:
+		+ Mô tả: đăng nhập vào hệ thống
+		+ API: /user/api/login
+		+ Method: POST
+		+ Form:
+			+ phoneNumber: varchar(50)
+			+ password: varchar(255)
+		+ Respone:
+			[
+				status: [CODE],
+				'data' : {
+					'userId': [UER_ID],
+					'name': [NAME],
+					'birthday': [BIRTHDAY],
+					'gender': ['male'| 'female'],
+					'address': [ADRESS]
+				}
+			]
+
