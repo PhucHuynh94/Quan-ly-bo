@@ -4,17 +4,17 @@
  * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
-namespace User\Model;
+namespace Cow\Model;
 
 use Phalcon\Mvc\Model\Validator\Uniqueness;
 use stdClass;
 
-class User extends \Phalcon\Mvc\Model
+class Cow extends \Phalcon\Mvc\Model
 {
 
     public function getSource()
     {
-        return "user";
+        return "cow";
     }
 
     private $id;
