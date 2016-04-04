@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
+ */
+
 namespace User;
 
 class Module

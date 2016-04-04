@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Routes
- * @copyright Copyright (c) 2011 - 2014 Aleksandr Torosh (http://wezoom.com.ua)
- * @author Aleksandr Torosh <webtorua@gmail.com>
+ * @author dinhnhatbang <dinhnhatbang@gmail.com>
  */
 
 namespace User;

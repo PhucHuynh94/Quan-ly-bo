@@ -10,7 +10,6 @@ use Application\Mvc\Controller;
 use User\Model\User;
 use User\Form\LoginForm;
 use User\Form\UserForm;
-use Phalcon\Mvc\View;
 use Phalcon\Http\Response;
 
 class ApiController extends Controller
