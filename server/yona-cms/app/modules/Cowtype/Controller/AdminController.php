@@ -42,7 +42,7 @@ class AdminController extends Controller
             $form->bind($post, $model);
             if ($form->isValid()) {
                 if ($model->save()) {
-                    $this->flash->success($this->helper->at('Cowtype '. $model->getName() .'created'));
+                    $this->flash->success($this->helper->at('Giống bò đã được tạo'));
                     $this->redirect($this->url->get() . 'cowtype/admin');
                 } else {
                     $this->flashErrors($model);
@@ -56,7 +56,7 @@ class AdminController extends Controller
         $this->view->model = $model;
         $this->view->submitButton = $this->helper->at('Add New');
 
-        $this->helper->title($this->helper->at('Add new cow type'), true);
+        $this->helper->title($this->helper->at('Thêm mới giống bò'), true);
     }
 
     public function editAction($id)
@@ -71,7 +71,7 @@ class AdminController extends Controller
             $form->bind($post, $model);
             if ($form->isValid()) {
                 if ($model->save() == true) {
-                    $this->flash->success('Cowtype has been saved');
+                    $this->flash->success('Đã lưu lại');
                     return $this->redirect($this->url->get() . 'cowtype/admin');
                 } else {
                     $this->flashErrors($model);
@@ -87,7 +87,7 @@ class AdminController extends Controller
         $this->view->form = $form;
         $this->view->model = $model;
 
-        $this->helper->title($this->helper->at('Manage Cow type'), true);
+        $this->helper->title($this->helper->at('Sửa thông tin giống bò'), true);
     }
 
     public function deleteAction($id)
@@ -98,11 +98,11 @@ class AdminController extends Controller
         }
         if ($this->request->isPost()) {
             $model->delete();
-            $this->flash->warning('Deleting cow type ' . $model->getName());
+            $this->flash->warning('Xóa giống bò thành công');
             return $this->redirect($this->url->get() . 'cowtype/admin');
         }
         $this->view->model = $model;
-        $this->helper->title($this->helper->at('Delete cow type'), true);
+        $this->helper->title($this->helper->at('Xóa giống bò'), true);
     }
 
 }
