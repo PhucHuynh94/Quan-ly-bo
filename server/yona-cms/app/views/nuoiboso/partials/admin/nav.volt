@@ -65,19 +65,26 @@
     </div>
 
     <div class="item">
-        <div class="header">{{ helper.at('User') }} <i class="wrench icon"></i></div>
-
+        <div class="header">{{ helper.at('Tài khoản') }} <i class="wrench icon"></i></div>
         <div class="menu">
             <a class="item{{ helper.activeMenu().activeClass('user') }}" href="{{ url.get() }}user/admin">
-                {{ helper.at('List Users') }} <i class="user icon"></i>
+                {{ helper.at('Khách hàng') }} <i class="user icon"></i>
             </a>
-        </div>
+        </div>     
+    </div>
+    <div class="item">
+        <div class="header">{{ helper.at('Bò') }} <i class="wrench icon"></i></div>
         <div class="menu">
-            <a class="item{{ helper.activeMenu().activeClass('user-admin-add') }}" href="{{ url.get() }}user/admin/add">
-                {{ helper.at('Add User') }} <i class="user icon"></i>
+            <a class="item{{ helper.activeMenu().activeClass('cow') }}" href="{{ url.get() }}cow/admin">
+                {{ helper.at('Danh sách bò') }} <i class="user icon"></i>
             </a>
-        </div>        
-    </div>    
+        </div>  
+        <div class="menu">
+            <a class="item{{ helper.activeMenu().activeClass('cowtype') }}" href="{{ url.get() }}cowtype/admin">
+                {{ helper.at('Giống bò') }} <i class="user icon"></i>
+            </a>
+        </div>     
+    </div>            
 
     <div class="item">
         <a href="{{ url.get() }}" class="ui primary tiny button" target="_blank">
