@@ -6,10 +6,10 @@ return [
 
     'database'  => [
         'adapter'  => 'Mysql',
-        'host'     => '128.199.116.234',
-        'username' => 'nuoiboso',
-        'password' => 'nuoiboso123!@#',
-        'dbname'   => 'nuoiboso',
+        'host'     => 'localhost',
+        'username' => '',
+        'password' => '',
+        'dbname'   => '',
         'charset'  => 'utf8',
     ],
 
